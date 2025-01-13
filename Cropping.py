@@ -1,6 +1,11 @@
+from PIL import Image
+import os
 import cv2
 import numpy as np
 
+# Folder containing the images
+input_folder = "/Users/whgf/Downloads/New scans "
+output_folder = "/Users/whgf/Downloads/New Crops"
 def crop_whitespace(image_path, output_path):
     # Load the image
     image = cv2.imread(image_path)
@@ -31,11 +36,7 @@ def crop_whitespace(image_path, output_path):
 # Process each image in the input folder
 for filename in os.listdir(input_folder):
     if filename.lower().endswith(('.png', '.jpg', '.jpeg', '.bmp', '.gif')):
-        input_path = os.path.join(input_folder, filename)
-        output_path = os.path.join(output_folder, filename)
-        crop_box = auto_crop(input_path)
-        with Image.open(input_path) as img:
-            cropped_img = img.crop(crop_box)
-            cropped_img.save(output_path)
-            print(f"Cropped and saved: {output_path}")
-crop_whitespace("/Users/whgf/Library/CloudStorage/GoogleDrive-Wendy@wendyhilliardfoundation.org/Shared drives/WHGF Photo and  Videos/Wendy's Photos and Videos/Old family photos/Freinds copy/JP1 63.png", "/Users/whgf/Library/CloudStorage/GoogleDrive-Wendy@wendyhilliardfoundation.org/Shared drives/WHGF Photo and  Videos/Wendy's Photos and Videos/Old family photos/Cropped /JP1 63.png")
+        input_pathx = os.path.join(input_folder, filename)
+        output_pathx = os.path.join(output_folder, filename)
+        crop_whitespace(input_pathx, output_pathx)
+        print(f"Cropped and saved: {output_pathx}")
